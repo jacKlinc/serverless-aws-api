@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import type { AWS } from "@serverless/typescript";
 
 import getCityInfo from "@functions/getCityInfo";
@@ -16,7 +17,7 @@ const serverlessConfiguration: AWS = {
     name: "aws",
     runtime: "nodejs14.x",
     region: 'eu-central-1',
-    profile: "jacKlinc",
+    profile: process.env.PROFILE ?? 'default',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
