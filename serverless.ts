@@ -1,31 +1,31 @@
-import type { AWS } from '@serverless/typescript';
+import type { AWS } from "@serverless/typescript";
 
-import hello from '@functions/hello';
+import getCityInfo from "@functions/getCityInfo";
 
 const serverlessConfiguration: AWS = {
-  service: 'serverless-aws-api',
-  frameworkVersion: '2',
+  service: "serverless-aws-api",
+  frameworkVersion: "3",
   custom: {
     webpack: {
-      webpackConfig: './webpack.config.js',
+      webpackConfig: "./webpack.config.js",
       includeModules: true,
     },
   },
-  plugins: ['serverless-webpack'],
+  plugins: ["serverless-webpack"],
   provider: {
-    name: 'aws',
-    runtime: 'nodejs16.x',
+    name: "aws",
+    runtime: "nodejs14.x",
+    profile: "jacKlinc",
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
     environment: {
-      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
     },
-    lambdaHashingVersion: '20201221',
+    lambdaHashingVersion: "20201221",
   },
-  // import the function via paths
-  functions: { hello },
+  functions: { getCityInfo },
 };
 
 module.exports = serverlessConfiguration;
