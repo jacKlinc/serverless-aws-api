@@ -17,7 +17,6 @@ const serverlessConfiguration: AWS = {
     name: "aws",
     runtime: "nodejs14.x",
     region: 'eu-central-1',
-    profile: process.env.PROFILE ?? 'default',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
