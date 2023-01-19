@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import type { AWS } from '@serverless/typescript';
 
-import getCityInfo from '@functions/getCityInfo';
-import dynamoResources from './src/dynamoResources';
+import { setData, listenToStream } from '@functions/index';
+import dynamoResources from '@resources/dynamoResources';
 
 const serverlessConfiguration: AWS = {
   service: 'serverless-aws-api',
@@ -20,7 +20,7 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
   },
-  plugins: ['serverless-esbuild'],
+  plugins: ['serverless-esbuild', 'serverless-offline'],
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
@@ -45,7 +45,7 @@ const serverlessConfiguration: AWS = {
       },
     ],
   },
-  functions: { getCityInfo },
+  functions: { setData, listenToStream },
   resources: {
     Resources: {
       ...dynamoResources,
