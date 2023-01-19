@@ -4,10 +4,9 @@ export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
   events: [
     {
-      http: {
-        method: 'get',
-        path: `${handlerPath(__dirname)}/{city}`,
-        cors: true,
+      httpApi: {
+        path: '/',
+        method: 'post',
       },
     },
   ],
