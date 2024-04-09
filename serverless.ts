@@ -14,7 +14,7 @@ const serverlessConfiguration: AWS = {
       minify: false,
       sourcemap: true,
       exclude: ['aws-sdk'],
-      target: 'node16',
+      target: 'node20',
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
@@ -23,9 +23,8 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-esbuild', 'serverless-offline'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs16.x',
+    runtime: 'nodejs20.x',
     region: 'eu-central-1',
-    // profile: 'jacKlinc',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
